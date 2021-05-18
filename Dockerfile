@@ -22,8 +22,11 @@ RUN git clone --branch ${BRANCH} https://github.com/Chia-Network/chia-blockchain
 && chmod +x install.sh \
 && /usr/bin/sh ./install.sh
 
+# add ossutil to Dockerfile
+RUN wget http://gosspublic.alicdn.com/ossutil/1.7.3/ossutil64                           
+
 WORKDIR /chia-blockchain
 RUN mkdir /plots
-ADD ./entrypoint.sh entrypoint.sh
+ADD ./entrypoint.sh entrypoint.sh=
 
 ENTRYPOINT ["bash", "./entrypoint.sh"]
